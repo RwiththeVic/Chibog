@@ -5,6 +5,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class SecondActivity extends AppCompatActivity {
 
     ViewPager viewPager;
@@ -20,6 +23,33 @@ public class SecondActivity extends AppCompatActivity {
 
         viewPager.setAdapter(viewPagerAdapter);
 
+        Timer timer = new Timer();;
+        timer.scheduleAtFixedRate(new MytimerTask(), 2000, 4000);
+
+    }
+
+    public class MytimerTask extends TimerTask{
+
+        @Override
+        public void run() {
+
+            SecondActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    if(viewPager.getCurrentItem() == 0) {
+                        viewPager.setCurrentItem(1);
+                    } else if (viewPager.getCurrentItem() == 1){
+                        viewPager.setCurrentItem(2);
+                    } else if (viewPager.getCurrentItem() == 2){
+                        viewPager.setCurrentItem(3);
+                    } else {
+                        viewPager.setCurrentItem(0);
+                    }
+                }
+            });
+
+        }
     }
 
 
