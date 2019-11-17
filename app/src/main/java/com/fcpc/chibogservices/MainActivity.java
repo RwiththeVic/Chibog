@@ -11,7 +11,8 @@ import android.widget.ImageView;
 
 import java.security.PrivateKey;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<publlc> extends AppCompatActivity {
+    private Button btnRegister;
 
     private EditText Name;
     private EditText Password;
@@ -22,9 +23,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btnRegister = (Button) findViewById(R.id.btnRegister);
         Name = (EditText) findViewById(R.id.etName);
         Password = (EditText) findViewById(R.id.etPassword);
         Login = (Button) findViewById(R.id.btnLogin);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRegistrationActivity();
+            }
+        });
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,16 +47,66 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void validate(String userName, String userPassword){
+public void openRegistrationActivity() {
+        Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
+        startActivity(intent);
+}
 
-        if((userName.equals("Arvic Cruz")) && (userPassword.equals("1234"))){
+    private void validate(String userName, String userPassword) {
+
+        if ((userName.equals("Arvic Cruz")) && (userPassword.equals("1234"))) {
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
             startActivity(intent);
         }
-            if((userName.equals("Ron Merced")) && (userPassword.equals("1234"))){
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
-            }
+        if ((userName.equals("Ron dela Merced")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+
+        if ((userName.equals("Josiah Buhayan")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+        if ((userName.equals("Neil Rico")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+        if ((userName.equals("Geoffrey Reyes")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+        if ((userName.equals("Adrian dela Cruz")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+        if ((userName.equals("Christian Griño")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+        if ((userName.equals("Iñigo Balmadrid")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+        if ((userName.equals("Adrian Cueto")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+        if ((userName.equals("Vinz Dacanay")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+        if ((userName.equals("Amiel Divinagracia")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+        if ((userName.equals("David Manalo")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
+        if ((userName.equals("Cryz Dexter Santos")) && (userPassword.equals("1234"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
     }
 }
 

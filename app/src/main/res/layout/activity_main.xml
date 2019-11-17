@@ -17,10 +17,10 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.405"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/background_fcpc" />
 
     <ImageView
@@ -39,7 +39,7 @@
         android:src="@drawable/fcpc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.209" />
@@ -117,13 +117,16 @@
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="144dp"
-        android:layout_height="38dp"
+        android:layout_width="151dp"
+        android:layout_height="45dp"
         android:background="@color/colorAccent"
         android:text="Register!"
         android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnLogin"
-        tools:layout_editor_absoluteY="307dp" />
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.449" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
