@@ -42,9 +42,6 @@ public class MainActivity<publlc> extends AppCompatActivity {
             }
         });
 
-        ImageView Imageview = (ImageView) findViewById(R.id.imageView);
-        Imageview.setImageResource(R.drawable.fcpc);
-
     }
 
 public void openRegistrationActivity() {
