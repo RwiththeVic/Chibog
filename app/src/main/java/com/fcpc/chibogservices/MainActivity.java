@@ -1,20 +1,24 @@
 package com.fcpc.chibogservices;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
-import java.security.PrivateKey;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity<publlc> extends AppCompatActivity {
+
+    ViewPager viewPager;
+
     private Button btnRegister;
 
     private EditText Name;
@@ -25,6 +29,15 @@ public class MainActivity<publlc> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager2);
+
+        ViewPagerLogin viewPagerLogin = new ViewPagerLogin(this);
+
+        viewPager.setAdapter(viewPagerLogin);
+
+        Timer timer = new Timer();;
+        timer.scheduleAtFixedRate(new MainActivity.MytimerTask(), 2000, 4000);
 
         YoYo.with(Techniques.Tada)
                 .duration(2000)
@@ -111,6 +124,29 @@ public void openRegistrationActivity() {
         if ((userName.equals("Cryz Dexter Santos")) && (userPassword.equals("1234"))) {
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
             startActivity(intent);
+        }
+    }
+    public class MytimerTask extends TimerTask{
+
+        @Override
+        public void run() {
+
+            MainActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    if(viewPager.getCurrentItem() == 0) {
+                        viewPager.setCurrentItem(1);
+                    } else if (viewPager.getCurrentItem() == 1){
+                        viewPager.setCurrentItem(2);
+                    } else if (viewPager.getCurrentItem() == 2){
+                        viewPager.setCurrentItem(3);
+                    } else {
+                        viewPager.setCurrentItem(0);
+                    }
+                }
+            });
+
         }
     }
 }
