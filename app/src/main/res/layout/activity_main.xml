@@ -24,16 +24,15 @@
         android:gravity="center_horizontal"
         android:text="Log in to Chibog!"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="36sp"
         android:visibility="visible"
-        app:fontFamily="@font/mm"
+        app:fontFamily="@font/mr"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.035"
-        tools:text="Log in or Register to Chibog!" />
+        app:layout_constraintVertical_bias="0.043"
+        tools:text="Log in to Chibog!" />
 
     <EditText
         android:id="@+id/etName"
@@ -101,7 +100,7 @@
         app:layout_constraintVertical_bias="0.555" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/txtCredits"
         android:layout_width="273dp"
         android:layout_height="20dp"
         android:text="Copyright © 2019 Arvic Cruz Management"
@@ -113,17 +112,17 @@
 
     <TextView
         android:id="@+id/txtReg"
-        android:layout_width="300dp"
-        android:layout_height="39dp"
-        android:text="Don't have an account?"
+        android:layout_width="265dp"
+        android:layout_height="71dp"
+        android:text="New to Chibog?"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:fontFamily="@font/ml"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.645"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        app:layout_constraintVertical_bias="0.644" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 import java.security.PrivateKey;
 
 public class MainActivity<publlc> extends AppCompatActivity {
@@ -22,6 +25,11 @@ public class MainActivity<publlc> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        YoYo.with(Techniques.Tada)
+                .duration(2000)
+                .repeat(2)
+                .playOn(findViewById(R.id.txtReg));
 
         btnRegister = (Button) findViewById(R.id.btnRegister);
         Name = (EditText) findViewById(R.id.etName);
@@ -106,5 +114,7 @@ public void openRegistrationActivity() {
         }
     }
 }
+
+
 
 

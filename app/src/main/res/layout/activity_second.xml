@@ -45,7 +45,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Meals Of The Day"
+        android:text="Top Meals of The Day"
         android:textColor="#020101"
         android:textSize="24sp"
         app:fontFamily="@font/mm"
@@ -60,12 +60,11 @@
         android:id="@+id/viewPager"
         android:layout_width="409dp"
         android:layout_height="187dp"
-        android:layout_marginBottom="196dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.326"
         tools:ignore="MissingConstraints"></androidx.viewpager.widget.ViewPager>
 
     <TextView
