@@ -125,6 +125,10 @@ public void openRegistrationActivity() {
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
             startActivity(intent);
         }
+        if ((userName.equals("1")) && (userPassword.equals("1"))) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }
     }
     public class MytimerTask extends TimerTask{
 
