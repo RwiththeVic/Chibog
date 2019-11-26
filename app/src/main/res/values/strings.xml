@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Chibog</string>
+    <string name="title_activity_checkout">Checkout</string>
+    <string name="title_activity_cart">cart</string>
 </resources>

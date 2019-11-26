@@ -122,7 +122,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_button"
-                android:text="Submit" />
+                android:text="Submit"
+                android:fontFamily="@font/contrail_one"
+                android:textSize="20sp"/>
 
         </LinearLayout>
     </ScrollView>
