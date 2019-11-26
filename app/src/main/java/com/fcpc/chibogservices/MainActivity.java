@@ -42,7 +42,7 @@ public class MainActivity<publlc> extends AppCompatActivity {
         YoYo.with(Techniques.Tada)
                 .duration(2000)
                 .repeat(2)
-                .playOn(findViewById(R.id.txtReg));
+                .playOn(findViewById(R.id.txtChibog2));
 
         btnRegister = (Button) findViewById(R.id.btnRegister);
         Name = (EditText) findViewById(R.id.etName);
