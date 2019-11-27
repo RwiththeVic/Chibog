@@ -3,7 +3,11 @@ package com.fcpc.chibogservices;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -12,12 +16,22 @@ public class SecondActivity extends AppCompatActivity {
 
     ViewPager viewPager;
 
+    FloatingActionButton fabOrder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
+        fabOrder = findViewById(R.id.fabGoOrder);
+
+        fabOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent().setClass(getApplicationContext(),FoodOrderList.class));
+            }
+        });
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
 

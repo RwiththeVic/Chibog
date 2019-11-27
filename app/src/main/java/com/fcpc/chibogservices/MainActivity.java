@@ -2,33 +2,58 @@ package com.fcpc.chibogservices;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.fcpc.chibogservices.core.Globals;
+import com.google.android.material.snackbar.Snackbar;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class MainActivity<publlc> extends AppCompatActivity {
 
     ViewPager viewPager;
 
+    /**
+     * View objects
+     */
     private Button btnRegister;
-
     private EditText Name;
     private EditText Password;
     private Button Login;
+
+    /*
+        HTML Client
+     */
+    private final OkHttpClient client = new OkHttpClient();
+
+    private Handler h;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        h = new Handler(this.getMainLooper());
 
         viewPager = (ViewPager) findViewById(R.id.viewPager2);
 
@@ -59,16 +84,88 @@ public class MainActivity<publlc> extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validate(Name.getText().toString(), Password.getText().toString());
+                doLogin(Name.getText().toString(),Password.getText().toString());
+                //validate(Name.getText().toString(), Password.getText().toString());
             }
         });
 
     }
 
-public void openRegistrationActivity() {
-        Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
-        startActivity(intent);
-}
+    private void doLogin(final String username, final String password){
+
+        if(username.length() >= 3 && password.length() >= 3){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try{
+                        final RequestBody formBody = new FormBody.Builder()
+                                .add("acc_user", username)
+                                .add("acc_pass", password)
+                                .build();
+
+                        final Request request = new Request.Builder()
+                                .url(Globals.LOGIN_URL)
+                                .post(formBody)
+                                .build();
+
+                        Call call = client.newCall(request);
+                        final Response response = call.execute();
+
+                        final String responseData = response.body().string().trim();
+
+                        if(responseData.equals("1")){
+                            h.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent goMain = new Intent().setClass(getApplicationContext()
+                                            ,SecondActivity.class);
+                                    startActivity(goMain);
+                                    Toast.makeText(MainActivity.this,
+                                            "Logged in.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        else{
+                            h.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(MainActivity.this,
+                                            "Incorrect username/password combination.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+
+                    }
+                    catch(final IOException ioex){
+                        h.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.e("ERR",ioex.getMessage());
+                                Snackbar.make(Login,"There was an error in connection." + ioex.getMessage()
+                                        ,Snackbar.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                }
+            }).start();
+        }
+        else{
+            Toast.makeText(this, "Username and password " +
+                    "must be at least 3 characters.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void showErrorDialog(){
+
+        AlertDialog.Builder ab = new AlertDialog.Builder(MainActivity.this);
+        ab.setTitle("");
+    }
+
+    public void openRegistrationActivity() {
+            Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
+            startActivity(intent);
+    }
 
     private void validate(String userName, String userPassword) {
 
