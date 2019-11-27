@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Ordering"
+            android:label="@string/title_activity_ordering"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".cart"
             android:label="@string/title_activity_cart"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Checkout"
             android:label="@string/title_activity_checkout"
